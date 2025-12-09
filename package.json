@@ -1,0 +1,18 @@
+{
+  "name": "boss-shopp",
+  "version": "1.0.0",
+  "description": "BOSS SHOPP - Full Stack E-commerce Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
+    "start": "node PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
+}

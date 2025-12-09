@@ -1,0 +1,44 @@
+===========================================
+SCRIPT PARA REMOVER TODOS OS PRODUTOS
+===========================================
+
+OPÇÃO 1 - PowerShell (Windows):
+--------------------------------
+Copie e cole este comando no PowerShell:
+
+$file = "PI3/PI2/frontend/index.html"
+$content = Get-Content $file -Raw -Encoding UTF8
+$content = $content -replace '(<div class="product-card">)[\s\S]*?(</div>\s*</div>\s*</div>)', ''
+$content = $content -replace '(<div class="products-grid">)\s*(</div>)', '$1`n                <div class="empty-products-message" style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">`n                    <i class="fas fa-box-open" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></i>`n                    <h3 style="color: #666; margin-bottom: 10px;">Nenhum produto disponível</h3>`n                    <p style="color: #999;">Adicione produtos pelo painel administrativo</p>`n                </div>`n            $2'
+$content | Out-File -FilePath $file -Encoding UTF8 -NoNewline
+Write-Host "✅ Produtos removidos com sucesso!"
+
+
+OPÇÃO 2 - Manualmente:
+-----------------------
+1. Abra o arquivo: PI3/PI2/frontend/index.html
+2. Procure por: <div class="product-card">
+3. Delete cada bloco completo de produto
+4. Deixe apenas: <div class="products-grid"></div>
+
+
+OPÇÃO 3 - Deixar como está:
+----------------------------
+Os produtos de exemplo não atrapalham o funcionamento.
+Você pode adicionar seus produtos pelo painel e eles
+aparecerão junto com os exemplos.
+
+
+===========================================
+COMO ADICIONAR SEUS PRODUTOS
+===========================================
+
+1. Acesse: http://localhost:3000/admin-panel.html
+2. Faça login como administrador
+3. Clique em "Produtos" > "Adicionar Novo"
+4. Preencha os dados do produto
+5. Salve
+
+Os produtos aparecerão automaticamente na página inicial!
+
+===========================================

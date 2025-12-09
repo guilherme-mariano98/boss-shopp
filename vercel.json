@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "PI3 (2)/PI3 (1)/PI3/PI2/backend/run_server.py",
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.9" }
+    },
+    {
+      "src": "PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "PI3 (2)/PI3 (1)/PI3/PI2/backend/run_server.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js"
+    }
+  ]
+}

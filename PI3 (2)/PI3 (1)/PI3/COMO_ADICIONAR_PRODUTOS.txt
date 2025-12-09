@@ -1,0 +1,156 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║         🎯 COMO ADICIONAR SEUS PRODUTOS - GUIA RÁPIDO       ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+✅ PRODUTOS DE EXEMPLO REMOVIDOS DAS SEÇÕES PRINCIPAIS!
+
+Agora você pode adicionar seus próprios produtos.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PASSO A PASSO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  INICIE O SERVIDOR
+   
+   No terminal, execute:
+   
+   cd PI3/PI2
+   node api_server.js
+   
+   Aguarde a mensagem: "Servidor rodando na porta 3000"
+
+
+2️⃣  ACESSE O PAINEL ADMINISTRATIVO
+   
+   Abra seu navegador e vá para:
+   
+   http://localhost:3000/admin-panel.html
+
+
+3️⃣  FAÇA LOGIN
+   
+   Use suas credenciais de administrador
+   (ou crie uma conta e defina como admin no banco)
+
+
+4️⃣  ADICIONE UM PRODUTO
+   
+   a) Clique em "Produtos" no menu lateral
+   b) Clique no botão "+ Adicionar Novo Produto"
+   c) Preencha o formulário:
+      
+      ┌─────────────────────────────────────┐
+      │ Nome: Meu Produto Incrível          │
+      │ Descrição: Descrição detalhada...   │
+      │ Preço: 99.90                        │
+      │ Categoria: Eletrônicos              │
+      │ Imagem: https://...                 │
+      │ Estoque: 50                         │
+      │ Desconto: 10 (opcional)             │
+      └─────────────────────────────────────┘
+   
+   d) Clique em "Salvar Produto"
+
+
+5️⃣  VEJA O RESULTADO
+   
+   Abra a página inicial:
+   
+   http://localhost:3000/index.html
+   
+   Seu produto aparecerá automaticamente! 🎉
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 ONDE SEUS PRODUTOS APARECERÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Página inicial (index.html)
+✓ Seção Flash Sale (se tiver desconto)
+✓ Seção Produtos em Alta
+✓ Página da categoria correspondente
+✓ Resultados de busca
+✓ Painel do vendedor
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 DICAS IMPORTANTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📸 IMAGENS
+   • Use URLs de imagens públicas
+   • Tamanho recomendado: 500x500px
+   • Formato: JPG ou PNG
+   • Exemplo: https://images.unsplash.com/photo-...
+
+💰 PREÇOS
+   • Use ponto para decimais: 99.90
+   • Não use símbolos: R$, $, etc.
+   • O sistema formatará automaticamente
+
+📦 ESTOQUE
+   • Mantenha sempre atualizado
+   • Produtos sem estoque não aparecem
+
+🏷️ CATEGORIAS
+   • Moda
+   • Eletrônicos
+   • Casa
+   • Games
+   • Esportes
+   • Infantil
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🆘 PROBLEMAS COMUNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Produto não aparece
+   → Recarregue a página (Ctrl + F5)
+   → Verifique se salvou corretamente
+   → Confirme a categoria
+
+❌ Imagem não carrega
+   → Teste a URL no navegador
+   → Use URLs públicas (não locais)
+   → Verifique se a URL está completa
+
+❌ Painel não abre
+   → Confirme que o servidor está rodando
+   → Verifique a URL: localhost:3000
+   → Limpe o cache do navegador
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 MAIS INFORMAÇÕES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Veja os arquivos de documentação:
+
+• LEIA-ME_PRODUTOS.md
+  → Resumo rápido
+
+• RESUMO_LIMPEZA_PRODUTOS.md
+  → Guia completo e detalhado
+
+• COMO_ACESSAR_PAINEIS.md
+  → Como acessar painéis admin e vendedor
+
+• remover_todos_produtos.txt
+  → Script para remover produtos restantes
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ TUDO PRONTO!
+
+As seções principais estão limpas e prontas para receber
+seus produtos. Comece adicionando 2-3 produtos de teste
+para ver como funciona.
+
+Boa sorte com sua loja! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
