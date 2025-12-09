@@ -4,7 +4,7 @@
     {
       "src": "PI3 (2)/PI3 (1)/PI3/PI2/backend/run_server.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python3.9" }
+      "config": { "runtime": "python3.11" }
     },
     {
       "src": "PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
