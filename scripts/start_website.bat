@@ -9,11 +9,11 @@ echo Installing/updating Python dependencies...
 pip install -r requirements.txt
 
 echo Installing/updating Node.js dependencies...
-cd "PI3 (2)/PI3 (1)/PI3/PI2/frontend"
+cd src\frontend
 npm install
-cd ../../../../..
+cd ..\..
 
 echo Starting Boss Shopp website...
-python start.py
+python scripts\start.py
 
 pause

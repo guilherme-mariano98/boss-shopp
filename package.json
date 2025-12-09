@@ -2,10 +2,10 @@
   "name": "boss-shopp",
   "version": "1.0.0",
   "description": "BOSS SHOPP - Full Stack E-commerce Application",
-  "main": "index.js",
+  "main": "src/frontend/server.js",
   "scripts": {
-    "dev": "node PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
-    "start": "node PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js",
+    "dev": "node src/frontend/server.js",
+    "start": "node src/frontend/server.js",
     "build": "echo 'No build step required'"
   },
   "dependencies": {

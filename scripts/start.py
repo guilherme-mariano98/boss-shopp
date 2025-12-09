@@ -40,7 +40,7 @@ def start_frontend():
     """Start the Node.js frontend server"""
     global frontend_process
     
-    frontend_dir = os.path.join(os.path.dirname(__file__), 'PI3 (2)', 'PI3 (1)', 'PI3', 'PI2', 'frontend')
+    frontend_dir = os.path.join(os.path.dirname(__file__), '..', 'src', 'frontend')
     
     try:
         print("Starting frontend server...")
@@ -67,7 +67,7 @@ def start_backend():
     """Start the Django backend server"""
     global backend_process
     
-    backend_dir = os.path.join(os.path.dirname(__file__), 'PI3 (2)', 'PI3 (1)', 'PI3', 'PI2', 'backend')
+    backend_dir = os.path.join(os.path.dirname(__file__), '..', 'src', 'backend')
     
     try:
         print("Starting backend server...")
