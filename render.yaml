@@ -3,7 +3,7 @@ services:
     name: boss-shopp-backend
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python PI3\\ \\(2\\)\\PI3\\ \\(1\\)\\PI3\\PI2\\backend\\run_server.py"
+    startCommand: "python \"PI3 (2)/PI3 (1)/PI3/PI2/backend/run_server.py\""
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.6
@@ -12,7 +12,7 @@ services:
     name: boss-shopp-frontend
     env: node
     buildCommand: "npm install"
-    startCommand: "node PI3\\ \\(2\\)\\PI3\\ \\(1\\)\\PI3\\PI2\\frontend\\server.js"
+    startCommand: "node \"PI3 (2)/PI3 (1)/PI3/PI2/frontend/server.js\""
     envVars:
       - key: NODE_VERSION
         value: 18
