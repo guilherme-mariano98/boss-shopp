@@ -128,14 +128,24 @@ function collectShippingData() {
 }
 
 // Função para mostrar notificação (cópia da função em script.js)
-function showNotification(message) {
+function showNotification(message, type = 'success') {
+    // Definir cores baseadas no tipo
+    const colors = {
+        success: '#000000',
+        warning: '#ff6b35',
+        error: '#ff4444',
+        info: '#2196F3'
+    };
+    
+    const bgColor = colors[type] || colors.success;
+    
     // Criar elemento de notificação
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
-        background-color: #000000;
+        background-color: ${bgColor};
         color: #ffffff;
         padding: 15px 20px;
         border-radius: 5px;
@@ -842,6 +852,19 @@ function updateCartCount() {
 
 // Função de inicialização robusta
 function initPurchasePage() {
+    // Verificar se o usuário está logado antes de permitir a compra
+    const authToken = localStorage.getItem('authToken');
+    const user = localStorage.getItem('user');
+    
+    if (!authToken || !user) {
+        // Usuário não está logado, redirecionar para a página de login
+        showNotification('Você precisa estar logado para finalizar a compra!', 'error');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+        return;
+    }
+    
     // Garantir que o carrinho seja carregado
     loadCart();
     

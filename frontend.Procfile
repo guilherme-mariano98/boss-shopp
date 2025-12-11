@@ -1,0 +1,1 @@
+web: cd src/frontend && node server.js

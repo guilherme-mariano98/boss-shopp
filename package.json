@@ -4,8 +4,8 @@
   "description": "BOSS SHOPP - Full Stack E-commerce Application",
   "main": "src/frontend/server.js",
   "scripts": {
-    "dev": "node src/frontend/server.js",
-    "start": "node src/frontend/server.js",
+    "dev": "cd src/frontend && node server.js",
+    "start": "cd src/frontend && node server.js",
     "build": "echo 'No build step required'"
   },
   "dependencies": {

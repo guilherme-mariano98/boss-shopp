@@ -12,6 +12,7 @@ import time
 import signal
 import psutil
 import webbrowser
+import socket
 from flask import Flask, jsonify
 
 # Create Flask app
@@ -40,7 +41,7 @@ def start_frontend():
     """Start the Node.js frontend server"""
     global frontend_process
     
-    frontend_dir = os.path.join(os.path.dirname(__file__), '..', 'src', 'frontend')
+    frontend_dir = os.path.join(os.path.dirname(__file__), 'PI3 (2)', 'PI3 (1)', 'PI3', 'PI2', 'frontend')
     
     try:
         print("Starting frontend server...")
@@ -56,7 +57,10 @@ def start_frontend():
         def monitor_frontend():
             if frontend_process.stdout:
                 for line in iter(frontend_process.stdout.readline, b''):
-                    print(f"[FRONTEND] {line.decode('utf-8').strip()}")
+                    try:
+                        print(f"[FRONTEND] {line.decode('utf-8', errors='replace').strip()}")
+                    except Exception:
+                        pass
         
         threading.Thread(target=monitor_frontend, daemon=True).start()
         
@@ -67,7 +71,7 @@ def start_backend():
     """Start the Django backend server"""
     global backend_process
     
-    backend_dir = os.path.join(os.path.dirname(__file__), '..', 'src', 'backend')
+    backend_dir = os.path.join(os.path.dirname(__file__), 'PI3 (2)', 'PI3 (1)', 'PI3', 'PI2', 'backend')
     
     try:
         print("Starting backend server...")
@@ -83,19 +87,42 @@ def start_backend():
         def monitor_backend():
             if backend_process.stdout:
                 for line in iter(backend_process.stdout.readline, b''):
-                    print(f"[BACKEND] {line.decode('utf-8').strip()}")
+                    try:
+                        print(f"[BACKEND] {line.decode('utf-8', errors='replace').strip()}")
+                    except Exception:
+                        pass
         
         threading.Thread(target=monitor_backend, daemon=True).start()
         
     except Exception as e:
         print(f"Error starting backend: {e}")
 
+def get_local_ip():
+    """Detect local network IP address for LAN access"""
+    ip = 'localhost'
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+    except Exception:
+        pass
+    finally:
+        try:
+            s.close()
+        except Exception:
+            pass
+    return ip
+
 def open_website():
-    """Open the website in the default browser"""
+    """Open the website locally and show LAN URL"""
     time.sleep(8)  # Wait for servers to start
     try:
-        webbrowser.open("http://localhost:3000")
+        local_ip = get_local_ip()
+        # Prefer opening the LAN URL
+        webbrowser.open(f"http://{local_ip}:8000")
         print("Website opened in your default browser!")
+        print(f"Network access (LAN): http://{local_ip}:8000")
+        print("Local access: http://localhost:8000")
         print("The website is now optimized for mobile devices!")
     except Exception as e:
         print(f"Could not open browser: {e}")
@@ -132,11 +159,13 @@ signal.signal(signal.SIGTERM, signal_handler)
 @app.route('/')
 def index():
     """Health check endpoint"""
+    local_ip = get_local_ip()
     return jsonify({
         "status": "OK",
         "message": "Boss Shopp main coordinator is running",
         "services": {
-            "frontend": "http://localhost:3000",
+            "frontend_local": "http://localhost:8000",
+            "frontend_network": f"http://{local_ip}:8000",
             "backend_api": "http://localhost:8000/api/",
             "backend_admin": "http://localhost:8000/admin/"
         },
@@ -148,6 +177,7 @@ def health():
     """Detailed health check endpoint"""
     frontend_status = "running" if frontend_process and frontend_process.poll() is None else "stopped"
     backend_status = "running" if backend_process and backend_process.poll() is None else "stopped"
+    local_ip = get_local_ip()
     
     return jsonify({
         "status": "OK",
@@ -159,6 +189,12 @@ def health():
             "status": backend_status,
             "pid": backend_process.pid if backend_process else None
         },
+        "urls": {
+            "frontend_local": "http://localhost:8000",
+            "frontend_network": f"http://{local_ip}:8000",
+            "backend_api": "http://localhost:8000/api/",
+            "backend_admin": "http://localhost:8000/admin/"
+        },
         "mobile_support": "enabled"
     })
 
@@ -169,6 +205,7 @@ def main():
     print("=" * 50)
     print("Mobile support: ENABLED")
     print("Optimizations for touch devices and small screens")
+    local_ip = get_local_ip()
     
     # Start services
     start_backend()
@@ -183,7 +220,8 @@ def main():
     time.sleep(3)
     
     print("\nServices started:")
-    print("- Frontend: http://localhost:3000")
+    print("- Frontend (local): http://localhost:8000")
+    print(f"- Frontend (network): http://{local_ip}:8000")
     print("- Backend API: http://localhost:8000/api/")
     print("- Backend Admin: http://localhost:8000/admin/")
     print("\nThe website should now be open in your browser!")

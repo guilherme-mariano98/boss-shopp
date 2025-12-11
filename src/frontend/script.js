@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // Função para adicionar produto ao carrinho
 function addToCart(productName, price) {
     // Verificar se o usuário está logado
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const userName = localStorage.getItem('userName');
+    const authToken = localStorage.getItem('authToken');
+    const user = localStorage.getItem('user');
     
-    if (!isLoggedIn) {
+    if (!authToken || !user) {
         // Mostrar modal de login
         showLoginModal();
         showNotification('Você precisa estar logado para adicionar produtos ao carrinho!', 'warning');
@@ -79,7 +79,7 @@ function showLoginModal() {
         </div>
         <h2 style="color: #333; margin-bottom: 15px; font-size: 1.8rem;">Login Necessário</h2>
         <p style="color: #666; margin-bottom: 30px; font-size: 1.1rem;">
-            Você precisa estar logado para adicionar produtos ao carrinho.
+            Você precisa estar logado para adicionar produtos ao carrinho e finalizar compras.
         </p>
         <div style="display: flex; gap: 15px; justify-content: center;">
             <a href="login.html" style="
@@ -437,6 +437,16 @@ function setupLazyLoading() {
 
 // Função para simular checkout
 function checkout() {
+    // Verificar se o usuário está logado
+    const authToken = localStorage.getItem('authToken');
+    const user = localStorage.getItem('user');
+    
+    if (!authToken || !user) {
+        showNotification('Você precisa estar logado para finalizar a compra!', 'warning');
+        showLoginModal();
+        return;
+    }
+    
     // Carregar carrinho do localStorage
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
